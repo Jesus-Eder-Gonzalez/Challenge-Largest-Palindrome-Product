@@ -10,17 +10,8 @@ module.exports = function (digits) {
   var factor_1 = 0;
   var palindromeNumber = 0;
 
-  let factorCreator = function (digits) {
-    let digitScaffold = '';
-    for (let i = 0; i < digits; i++) {
-      digitScaffold += 9;
-    }
-    return Number(digitScaffold);
-  }
-
-  let factorReset = factorCreator(digits);
-  let tempFactor_0 = factorReset
-  let tempFactor_1 = factorReset;
+  let tempFactor_0 = Math.pow(10, digits) - 1;
+  let tempFactor_1 = tempFactor_0;
   let currentProduct = 0;
   let currentString = '';
 
@@ -38,15 +29,15 @@ module.exports = function (digits) {
         break;
       }
 
-      if (currentProduct < palindromeNumber){
+      if (currentProduct < palindromeNumber) {
         break;
       }
 
       tempFactor_0--;
     }
-    
-    tempFactor_0 = factorReset;
+
     tempFactor_1--;
+    tempFactor_0 = tempFactor_1;
   }
 
   return {
